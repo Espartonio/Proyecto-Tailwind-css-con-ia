@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <title>Tienda de Electrodomésticos</title>
+
+    <style>
+        .preview {
+            max-height: 80vh;
+            /* Ajusta la altura máxima */
+            max-width: 90vw;
+            /* Ajusta el ancho máximo */
+        }
+
+        .modal {
+            visibility: hidden;
+            /* Ocultar por defecto */
+            opacity: 0;
+            /* Hacerlo invisible */
+            transition: visibility 0s, opacity 0.5s linear;
+            /* Transición suave */
+        }
+
+        .modal.active {
+            visibility: visible;
+            /* Mostrar cuando está activo */
+            opacity: 1;
+            /* Hacerlo visible */
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-100">
+    <div class="min-h-screen bg-gradient-to-b from-black to-blue-900">
+        <!-- Navbar -->
+        <nav class="bg-blue-600 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-white text-4xl font-bold">Ventas Antonio</h1>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-white hover:text-blue-300">Inicio</a></li>
+                    <li><a href="#" class="text-white hover:text-blue-300">Productos</a></li>
+                    <li><a href="#" class="text-white hover:text-blue-300">Ofertas</a></li>
+                    <li><a href="#" class="text-white hover:text-blue-300">Contacto</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="relative h-64">
+            <div class="swiper-container h-full">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide bg-blue-600 flex items-center justify-center">
+                        <h1 class="text-white text-4xl font-bold text-center">
+                            <img src="images/001.jpg" alt="Producto 1" class="w-full h-48 object-cover">
+                            <h1 class="text-white text-4xl font-bold text-center">Los Mejores Precios,
+                                Inigualables</h1>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide bg-blue-700 flex items-center justify-center">
+                        <img src="images/002.jpg" alt="Producto 2" class="w-full h-48 object-cover">
+                        <h1 class="text-white text-4xl font-bold text-center">Calidad y Confianza en Cada Producto</h1>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide bg-blue-800 flex items-center justify-center">
+                        <img src="images/003.jpg" alt="Producto 3" class="w-full h-48 object-cover">
+                        <h1 class="text-white text-4xl font-bold text-center">Servicio a Domicilio</h1>
+                    </div>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+        </header>
+
+        <!-- Área de Vista Previa -->
+        <h2 class="text-xl font-semibold mt-6"> </h2>
+        <img id="imagePreview" src="" alt="Vista Previa" class="preview hidden" onclick="hidePreview()">
+
+        <!-- Products Section -->
+        <section class="container mx-auto p-6">
+            <h2 class="text-2xl font-bold text-4xl text-white mb-4">Productos en Ofertas</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden" cursor-pointer"
+                    onclick="previewImage('images/390-usd.jpg')">
+                    <img src="images/390-usd.jpg" alt="390-usd" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">TV Kodak de 40"</h3>
+                        <p class="text-gray-700">$390.00</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <a rel="noopener"
+                                href="https://api.whatsapp.com/send?phone=+5353739500&text=Hola,%20me%20interesa%20la%20TV%20Kodak%20de%2040%22"
+                                class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300 ease-in-out"
+                                target="_blank">
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden" cursor-pointer"
+                    onclick="previewImage('images/420-usd.jpg')">
+                    <img src="images/420-usd.jpg" alt="420-usd" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">TV Challenger de 43"</h3>
+                        <p class="text-gray-700">$420.00</p>
+                        <button class="mt-2 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/460-usd.jpg" alt="460-usd" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">TV Kodak de 43"</h3>
+                        <p class="text-gray-700">$460.00</p>
+                        <button class="mt-2 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/Microondas-20-L-160-usd.jpg" alt="Microondas-20-L-160-usd"
+                        class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Microondas 20L</h3>
+                        <p class="text-gray-700">$160.00</p>
+                        <button class="mt-2 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/Royal-7-kilos-310-usd.jpg" alt="Royal-7-kilos-310-usd"
+                        class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Royal 7 kilos</h3>
+                        <p class="text-gray-700">$310.00</p>
+                        <button class="mt-2 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="images/Milexus-3.5-pies-3-meses-garantía-330-usd.jpg"
+                        alt="Milexus-3.5-pies-3-meses-garantía-330-usd" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold">Milexus de 3.5 pies</h3>
+                        <p class="text-gray-700">$330.00</p>
+                        <button class="mt-2 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Modal for Image Preview -->
+        <div id="imageModal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50">
+            <img id="imagePreview" src="" alt="Vista Previa" class="preview cursor-pointer" onclick="hidePreview()">
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white p-4 mt-6">
+            <div class="container mx-auto text-center">
+                <p>&copy; 2024 Tienda de Electrodomésticos. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                loop: true,
+                effect: 'cube',
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                spaceBetween: 40,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+            });
+            function previewImage(imageSrc) {
+                const imgPreview = document.getElementById('imagePreview');
+                const modal = document.getElementById('imageModal');
+                imgPreview.src = imageSrc;
+                modal.classList.add('active'); // Muestra el modal
+            }
+
+            function hidePreview() {
+                const modal = document.getElementById('imageModal');
+                modal.classList.remove('active'); // Oculta el modal
+            }
+        </script>
+    </div>
+</body>
+
+</html>
